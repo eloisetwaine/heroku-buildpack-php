@@ -1,5 +1,8 @@
 name: Platform packages build and deploy to -develop/
-run-name: Build ${{ inputs.dry-run == true && 'w/o deploy' || '& deploy' }}${{ inputs.overwrite == true && '(+overwrite)' || '' }} to dist-${{inputs.stack}}-develop/ ${{ inputs.publish == false && 'w/o publishing packages into Composer platform repository' || '' }}
+run-name: Build ${{ inputs.dry-run == true && 'w/o deploy' || '& deploy' }}${{ inputs.overwrite == true && '(+overwrite)' || '' }} to dist-${{inputs.stack}}-develop/
+
+env:
+  dst_path_suffix: "-stable/"
 
 on:
   workflow_dispatch:
@@ -14,6 +17,8 @@ on:
         options:
         - heroku-20
         - heroku-22
+        - heroku-24-amd64
+        - heroku-24-arm64
         required: true
       dry-run:
         description: 'Build packages without deploying to S3 (e.g. for testing a formula)'
@@ -24,11 +29,6 @@ on:
         description: 'Overwrite existing packages'
         type: boolean
         default: false
-        required: false
-      publish:
-        description: 'Publish updated Composer platform repository after all builds are complete'
-        type: boolean
-        default: true
         required: false
       concurrency:
         description: 'GitHub Actions runner concurrency'
@@ -41,7 +41,7 @@ permissions:
 
 jobs:
   formulae-list:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       formulae: ${{ steps.expand-formulae.outputs.matrix }}
     steps:
@@ -62,27 +62,32 @@ jobs:
           ls -f ${{inputs.formulae}} | xargs -n 1 echo - >> "$GITHUB_STEP_SUMMARY"
           ls -f ${{inputs.formulae}} | jq -jcRn '[inputs|select(length>0)]' >> "$GITHUB_OUTPUT"
   docker-build:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ endsWith(inputs.stack, '-arm64') && 'pub-hk-ubuntu-24.04-arm-small' || 'ubuntu-24.04' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cache Docker build
         id: cache-docker
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           key: docker-cache-heroku-php-build-${{inputs.stack}}.${{github.sha}}
           path: /tmp/docker-cache.tar.gz
       - name: Build Docker image
         if: steps.cache-docker.outputs.cache-hit != 'true'
-        run: docker build --tag heroku-php-build-${{inputs.stack}}:${{github.sha}} --file support/build/_docker/${{inputs.stack}}.Dockerfile .
+        # our "input" stack might contain a "-amd64" or "-arm64" suffix, which we strip off for the Dockerfile name
+        run: |
+          shopt -s extglob
+          stackname_with_architecture=${{inputs.stack}}
+          docker build --tag heroku-php-build-${stackname_with_architecture}:${{github.sha}} --file support/build/_docker/${stackname_with_architecture%-?(amd|arm)64}.Dockerfile .
       - name: Save built Docker image
         if: steps.cache-docker.outputs.cache-hit != 'true'
         run: docker save heroku-php-build-${{inputs.stack}}:${{github.sha}} | gzip -1 > /tmp/docker-cache.tar.gz
   deploys:
     needs: [formulae-list, docker-build]
     if: ${{ needs.formulae-list.outputs.formulae != '[]' && needs.formulae-list.outputs.formulae != '' }}
-    runs-on: pub-hk-ubuntu-22.04-medium
+    runs-on: ${{ endsWith(inputs.stack, '-arm64') && 'pub-hk-ubuntu-24.04-arm-xlarge' || 'pub-hk-ubuntu-24.04-xlarge' }}
     strategy:
+      fail-fast: false
       max-parallel: ${{ fromJSON(inputs.concurrency) }}
       matrix:
         formula: ${{ fromJSON(needs.formulae-list.outputs.formulae) }}
@@ -93,7 +98,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Restore cached Docker build
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           key: docker-cache-heroku-php-build-${{inputs.stack}}.${{github.sha}}
           path: /tmp/docker-cache.tar.gz
@@ -110,8 +115,8 @@ jobs:
         run: docker run --rm --env-file=support/build/_docker/env.default heroku-php-build-${{inputs.stack}}:${{github.sha}} deploy.sh --overwrite ${{matrix.formula}}
   mkrepo:
     needs: [deploys]
-    if: ${{ inputs.dry-run == false && inputs.publish == true }}
-    runs-on: ubuntu-22.04
+    if: ${{ inputs.dry-run == false }}
+    runs-on: ${{ endsWith(inputs.stack, '-arm64') && 'pub-hk-ubuntu-24.04-arm-small' || 'ubuntu-24.04' }}
     env:
       AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -119,7 +124,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Restore cached Docker build
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           key: docker-cache-heroku-php-build-${{inputs.stack}}.${{github.sha}}
           path: /tmp/docker-cache.tar.gz
@@ -130,11 +135,13 @@ jobs:
       - name: Dry-run sync.sh to show package changes available for syncing to production bucket
         run: |
           set -o pipefail
-          (yes n 2>/dev/null || true) | docker run --rm -i --env-file=support/build/_docker/env.default heroku-php-build-${{inputs.stack}}:${{github.sha}} sync.sh lang-php dist-${{inputs.stack}}-stable/ 2>&1 | tee sync.out
+          (yes n 2>/dev/null || true) | docker run --rm -i --env-file=support/build/_docker/env.default heroku-php-build-${{inputs.stack}}:${{github.sha}} sync.sh lang-php dist-${{inputs.stack}}${{env.dst_path_suffix}} 2>&1 | tee sync.out
       - name: Output job summary
         run: |
           echo '## Package changes available for syncing to production bucket' >> "$GITHUB_STEP_SUMMARY"
-          echo '**This is output from a dry-run**, no changes have been synced to production:' >> "$GITHUB_STEP_SUMMARY"
+          echo '> [!IMPORTANT]' >> "$GITHUB_STEP_SUMMARY"
+          echo '> **This is output from a dry-run**, no changes have been synced to production!' >> "$GITHUB_STEP_SUMMARY"
+          echo >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
-          sed -n '/The following packages will/,$p' sync.out >> "$GITHUB_STEP_SUMMARY"
+          sed -n '/^The following packages will/,/POTENTIALLY DESTRUCTIVE ACTION/{/POTENTIALLY DESTRUCTIVE ACTION/!p}' sync.out >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"

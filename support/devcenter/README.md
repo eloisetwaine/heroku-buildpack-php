@@ -1,6 +1,8 @@
-# Dev Center PHP Support Article Generator
+# Dev Center PHP Support Article and Changelog Generators
 
-This `generate.php` tool will, given platform repository URLs as arguments, generate:
+## PHP Support Generator
+
+The `generate.php` tool will, given platform repository URLs as arguments, generate:
 
 - the list of PHP runtimes, per stack
 - the list of built-in extensions, per PHP runtime series
@@ -16,24 +18,40 @@ The third-party extensions list will list major version series (e.g. 2.x and 3.x
 
 For the "Composers" and web servers, only the latest release of each major version series is listed per stack.
 
-## Invocation
+### Invocation
 
 First, `composer install` the dependencies.
 
 By default, all sections will be generated:
 
 ```ShellSession
-$ ./generate.php https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-20-stable/packages.json https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-22-stable/packages.json
+$ ./generate.php https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-{20,22,24-amd64}-stable/packages.json
 ```
 
 You may also generate any of the five sections individually using the `--runtimes`, `--built-in-extensions`, `--third-party-extensions`, `--composers`, or `--webservers` options:
 
 ```ShellSession
-$ ./generate.php --third-party-extensions https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-20-stable/packages.json https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-22-stable/packages.json
+$ ./generate.php --third-party-extensions https://lang-php.s3.us-east-1.amazonaws.com/dist-heroku-{20,22,24-amd64}-stable/packages.json
 ```
 
 You'd usually pipe the output into e.g. `pbcopy` and then update the Dev Center article.
 
-## Updating stacks and versions
+### Updating stacks and versions
 
 To add a new stack or PHP runtime series, add them to the respective lists at the top of `generate.php`. Stacks or series that are no longer in use will not be output, but it's still a good idea to periodically remove EOL stacks or series from the list.
+
+## Changelog Generator
+
+The `changelog.php` tool expects the output from one or more `sync.sh` runs as input on STDIN.
+
+It will then generate a list of new PHP releases, extensions, Composer versions, webservers, and other packages.
+
+### Invocation
+
+First, `composer install` the dependencies.
+
+Assuming you ran a `sync.sh` job for two stacks (say, heroku-20 and heroku-22) and `tee`d the outputs into `sync-heroku-{20,22}.log`:
+
+```ShellSession
+cat `sync-heroku-{20,22}.log | ./changelog.php`
+```

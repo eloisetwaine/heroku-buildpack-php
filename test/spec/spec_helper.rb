@@ -34,12 +34,16 @@ RSpec.configure do |config|
 	end
 end
 
-def successful_body(app, options = {})
+def successful_request(app, options = {})
 	retry_limit = options[:retry_limit] || 5
 	retry_interval = options[:retry_interval] || 2
 	path = options[:path] ? "/#{options[:path]}" : ''
 	web_url = app.platform_api.app.info(app.name).fetch("web_url")
-	Excon.get("#{web_url}#{path}", :idempotent => true, :expects => 200, :retry_limit => retry_limit, :retry_interval => retry_interval).body
+	Excon.get("#{web_url}#{path}", :idempotent => true, :expects => 200, :retry_limit => retry_limit, :retry_interval => retry_interval)
+end
+
+def successful_body(app, options = {})
+	successful_request(app, options).body
 end
 
 def expect_exit(expect: :to, operator: :eq, code: 0)
@@ -53,15 +57,22 @@ def expect_exit(expect: :to, operator: :eq, code: 0)
 end
 
 def expected_default_php(stack)
-	"8.2"
+	case stack
+		when "heroku-20"
+			"8.3"
+		else
+			"8.4"
+	end
 end
 
 def php_on_stack?(series)
 	case ENV["STACK"]
 		when "heroku-20"
-			available = ["7.3", "7.4", "8.0", "8.1", "8.2"]
+			available = ["7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
+		when "heroku-22"
+			available = ["8.1", "8.2", "8.3", "8.4"]
 		else
-			available = ["8.1", "8.2"]
+			available = ["8.2", "8.3", "8.4"]
 	end
 	available.include?(series)
 end

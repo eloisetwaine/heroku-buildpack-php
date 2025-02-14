@@ -1,6 +1,332 @@
-# heroku-buildpack-php CHANGELOG
+# Changelog
 
-## v240 (2023-10-27)
+## [Unreleased]
+
+
+## [v263] - 2025-02-14
+
+### ADD
+
+- PHP/8.3.17 [David Zuelke]
+- PHP/8.4.4 [David Zuelke]
+
+### CHG
+
+- Composer/2.8.5 [David Zuelke]
+- Blackfire/2.28.23 [David Zuelke]
+- Nginx/1.26.3 [David Zuelke]
+- Apache/2.4.63 [David Zuelke]
+
+## [v262] - 2025-01-17
+
+### ADD
+
+- ext-newrelic/11.5.0.18 (now available for PHP 8.4) [David Zuelke]
+- ext-blackfire/1.92.32 [David Zuelke]
+- PHP/8.3.16 [David Zuelke]
+- PHP/8.4.3 [David Zuelke]
+
+### CHG
+
+- Blackfire/2.28.22 [David Zuelke]
+
+## [v261] - 2024-12-20
+
+### ADD
+
+- PHP/8.2.27 [David Zuelke]
+- PHP/8.3.15 [David Zuelke]
+- PHP/8.4.2 [David Zuelke]
+- ext-mongodb/1.20.1 [David Zuelke]
+- ext-newrelic/11.4.0.17 [David Zuelke]
+- ext-blackfire/1.92.30 [David Zuelke]
+
+### CHG
+
+- Blackfire/2.28.21 [David Zuelke]
+- Composer/2.8.4 [David Zuelke]
+
+## [v260] - 2024-12-19
+
+### ADD
+
+- ext-blackfire/1.92.29 [David Zuelke]
+- ext-pcov/1.0.12 [David Zuelke]
+- PHP/8.4.1 [David Zuelke]
+
+### CHG
+
+- Composer/2.2.25 [David Zuelke]
+
+## [v259] - 2024-11-21
+
+### ADD
+
+- PHP/8.1.31 [David Zuelke]
+- PHP/8.2.26 [David Zuelke]
+- PHP/8.3.14 [David Zuelke]
+- ext-rdkafka/6.0.5 [David Zuelke]
+- ext-blackfire/1.92.28 [David Zuelke]
+
+### CHG
+
+- Update internal PHP EOL info to align with 2024 updates laid out in https://wiki.php.net/rfc/release_cycle_update [David Zuelke]
+- Blackfire/2.28.19 [David Zuelke]
+- Composer/2.8.3 [David Zuelke]
+
+## [v258] - 2024-10-31
+
+### ADD
+
+- PHP/8.2.25 [David Zuelke]
+- PHP/8.3.13 [David Zuelke]
+- ext-redis/6.1.0 [David Zuelke]
+- ext-uuid/1.2.1 [David Zuelke]
+- ext-oauth/2.0.9 [David Zuelke]
+- ext-memcached/3.3.0 [David Zuelke]
+- ext-rdkafka/6.0.4 [David Zuelke]
+- ext-newrelic/11.3.0.16 [David Zuelke]
+- ext-blackfire/1.92.27 [David Zuelke]
+
+### CHG
+
+- Composer/2.8.2 [David Zuelke]
+- Blackfire/2.28.17 [David Zuelke]
+
+## [v257] - 2024-09-27
+
+### ADD
+
+- PHP/8.1.30 [David Zuelke]
+- PHP/8.2.24 [David Zuelke]
+- PHP/8.3.12 [David Zuelke]
+- ext-ev/1.2.0 [David Zuelke]
+- ext-blackfire/1.92.23 [David Zuelke]
+- ext-apcu/5.1.24 [David Zuelke]
+- ext-mongodb/1.20.0 [David Zuelke]
+
+### CHG
+
+- Composer/2.7.9 [David Zuelke]
+- Blackfire/2.28.12 [David Zuelke]
+
+## [v256] - 2024-08-30
+
+### ADD
+
+- PHP/8.2.23 [David Zuelke]
+- PHP/8.3.11 [David Zuelke]
+- ext-blackfire/1.92.22 [David Zuelke]
+- ext-newrelic/11.1.0.14 [David Zuelke]
+
+### CHG
+
+- Blackfire/2.28.11 [David Zuelke]
+- Nginx/1.26.2 [David Zuelke]
+- Composer/2.7.8 [David Zuelke]
+
+## [v255] - 2024-08-02
+
+### ADD
+
+- PHP/8.2.22 [David Zuelke]
+- PHP/8.3.10 [David Zuelke]
+- ext-phalcon/5.8.0 [David Zuelke]
+- ext-event/3.1.4 [David Zuelke]
+- ext-newrelic/11.0.0.13 [David Zuelke]
+- ext-blackfire/1.92.21 [David Zuelke]
+
+### CHG
+
+- librdkafka/2.5.0 [David Zuelke]
+- Apache/2.4.62 [David Zuelke]
+- Blackfire/2.28.10 [David Zuelke]
+
+## [v254] - 2024-07-05
+
+### ADD
+
+- PHP/8.2.21 [David Zuelke]
+- PHP/8.3.9 [David Zuelke]
+- ext-newrelic/10.22.0.12 [David Zuelke]
+- ext-blackfire/1.92.18 [David Zuelke]
+
+### CHG
+
+- Sync Nginx `mime.types` config with upstream to add `application/wasm` for `.wasm` and `image/avif` for `.avif` files (#738) [David Zuelke]
+- Add MIME type `text/javascript` for `.mjs` files to Nginx config as per RFC 9239; `application/javascript` remains for `.js` from upstream default `mime.types` (#737) [David Zuelke]
+- Apache/2.4.61 [David Zuelke]
+- Blackfire/2.28.7 [David Zuelke]
+
+## [v253] - 2024-06-13
+
+### ADD
+
+- PHP/8.1.29 [David Zuelke]
+- PHP/8.2.20 [David Zuelke]
+- PHP/8.3.8 [David Zuelke]
+- ext-newrelic/10.21.0.11 [David Zuelke]
+- ext-mongodb/1.19.2 [David Zuelke]
+
+### CHG
+
+- Nginx/1.26.1 [David Zuelke]
+- Blackfire/2.28.4 [David Zuelke]
+- Composer/2.2.24 [David Zuelke]
+- Composer/2.7.7 [David Zuelke]
+
+## [v252] - 2024-05-31
+
+### ADD
+
+- Support heroku-24 [David Zuelke]
+- Build arm64 binaries for heroku-24+ [David Zuelke]
+
+### CHG
+
+- Use PHP 8.3 for bootstrapping [David Zuelke]
+- librdkafka/2.4.0 (for heroku-24+ only) [David Zuelke]
+
+## [v251] - 2024-05-30
+
+### ADD
+
+- PHP/8.3.7 [David Zuelke]
+
+## [v250] - 2024-05-29
+
+### ADD
+
+- PHP/8.1.28 [David Zuelke]
+- PHP/8.2.19 [David Zuelke]
+- PHP/8.3.6 [David Zuelke]
+- ext-newrelic/10.20.0.10 [David Zuelke]
+- ext-phalcon/5.7.0 [David Zuelke]
+- ext-blackfire/1.92.17 [David Zuelke]
+- ext-mongodb/1.19.1 [David Zuelke]
+
+### CHG
+
+- Composer/2.7.6 [David Zuelke]
+- Blackfire/2.28.3 [David Zuelke]
+
+## [v249] - 2024-04-12
+
+### ADD
+
+- PHP/8.2.18 [David Zuelke]
+- PHP/8.3.5 [David Zuelke]
+- ext-mongodb/1.18.1 [David Zuelke]
+
+### CHG
+
+- Blackfire/2.26.4 [David Zuelke]
+- Apache/2.4.59 [David Zuelke]
+
+## [v248] - 2024-03-28
+
+### ADD
+
+- PHP/8.2.17 [David Zuelke]
+- PHP/8.3.4 [David Zuelke]
+- ext-phalcon/5.6.2 [David Zuelke]
+- ext-newrelic/10.19.0.9 [David Zuelke]
+- ext-mongodb/1.18.0 [David Zuelke]
+- ext-blackfire/1.92.13 [David Zuelke]
+
+### CHG
+
+- Blackfire/2.26.1 [David Zuelke]
+- Composer/2.7.2 [David Zuelke]
+
+## [v247] - 2024-02-29
+
+### ADD
+
+- PHP/8.2.16 [David Zuelke]
+- PHP/8.3.3 [David Zuelke]
+- ext-event/3.1.3 [David Zuelke]
+- ext-pq/2.2.3 [David Zuelke]
+- ext-phalcon/5.6.1 [David Zuelke]
+- ext-blackfire/1.92.10 [David Zuelke]
+- ext-newrelic/10.17.0.7 [David Zuelke]
+
+### CHG
+
+- Improve handling of concurrent or unknown signals in boot scripts [David Zuelke]
+- Raise curl connection timeout threshold from 5 to 10 seconds [David Zuelke]
+- Blackfire/2.25.0 [David Zuelke]
+- Composer/2.2.23 [David Zuelke]
+- Composer/2.7.1 [David Zuelke]
+
+## [v246] - 2024-02-09
+
+### FIX
+
+- `WEB_CONCURRENCY` auto-tuning may warn about an invalid suffix for certain available memory values [David Zuelke]
+
+## [v245] - 2024-02-09
+
+### ADD
+
+- Boot scripts now have a `--test`/`-t` option to test PHP-FPM and web server configs and then exit. Can be repeated to dump configs for either or both, see `--help` for details. [David Zuelke]
+
+### CHG
+
+- New formula for determining number of PHP-FPM worker processes: `min(floor(RAM_AVAIL / memory_limit), ceil(log_2(RAM_AVAIL / CALC_BASE)) * NUM_CORES * 2 * (CALC_BASE / memory_limit)` [`CALC_BASE` is currently `128M`] - same results for current Heroku dyno types, but "softer" scaling of worker count on containers with a lot of RAM [David Zuelke]
+
+### FIX
+
+- PHP `memory_limit` in `.user.ini` does not override PHP-FPM `php_value` for `$WEB_CONCURRENCY` calculation [David Zuelke]
+- PHP-FPM `request_terminate_timeout` may have no effect [David Zuelke]
+
+## [v244] - 2024-01-24
+
+### ADD
+
+- PHP/8.3.2 [David Zuelke]
+- PHP/8.2.15 [David Zuelke]
+- ext-event/3.1.1 [David Zuelke]
+- ext-phalcon/5.6.0 [David Zuelke]
+- ext-blackfire/1.92.8 [David Zuelke]
+- ext-amqp/2.1.2 [David Zuelke]
+
+### CHG
+
+- blackfire/2.24.4 [David Zuelke]
+
+## [v243] - 2023-12-21
+
+### ADD
+
+- PHP/8.1.27 [David Zuelke]
+- PHP/8.2.14 [David Zuelke]
+- PHP/8.3.1 [David Zuelke]
+- ext-blackfire/1.92.4 [David Zuelke]
+- ext-mongodb/1.17.2 [David Zuelke]
+- ext-newrelic/10.15.0.4 [David Zuelke]
+
+### CHG
+
+- Composer/2.6.6 [David Zuelke]
+- blackfire/2.24.2 [David Zuelke]
+
+## [v242] - 2023-12-07
+
+### ADD
+
+- PHP/8.3.0 [David Zuelke]
+
+## [v241] - 2023-11-29
+
+- PHP/8.1.26 [David Zuelke]
+- PHP/8.2.13 [David Zuelke]
+- ext-apcu/5.1.23 [David Zuelke]
+- ext-mongodb/1.17.0 [David Zuelke]
+- ext-newrelic/10.14.0.3 [David Zuelke]
+- ext-blackfire/1.92.1 [David Zuelke]
+
+## [v240] - 2023-10-27
 
 ### ADD
 
@@ -18,7 +344,7 @@
 - Apache/2.4.58 [David Zuelke]
 - blackfire/2.23.0 [David Zuelke]
 
-## v239 (2023-09-30)
+## [v239] - 2023-09-30
 
 ### ADD
 
@@ -37,7 +363,7 @@
 
 - blackfire/2.22.0 [David Zuelke]
 
-## v238 (2023-08-31)
+## [v238] - 2023-08-31
 
 ### ADD
 
@@ -52,7 +378,7 @@
 - Import telemetry helper shell functions previously vendored from 'lang-common' S3 bucket [David Zuelke]
 - blackfire/2.21.0 [David Zuelke]
 
-## v237 (2023-08-04)
+## [v237] - 2023-08-04
 
 ### ADD
 
@@ -65,7 +391,7 @@
 
 - blackfire/2.19.0 [David Zuelke]
 
-## v236 (2023-07-18)
+## [v236] - 2023-07-18
 
 ### ADD
 
@@ -86,7 +412,7 @@
 
 - PHP binary build formula uses outdated signature for Composer installer (#641) [David Zuelke]
 
-## v235 (2023-06-09)
+## [v235] - 2023-06-09
 
 ### ADD
 
@@ -95,7 +421,7 @@
 - PHP/8.2.7 [David Zuelke]
 - ext-newrelic/10.10.0.1 [David Zuelke]
 
-## v234 (2023-05-25)
+## [v234] - 2023-05-25
 
 ### ADD
 
@@ -111,7 +437,7 @@
 - blackfire/2.16.1 [David Zuelke]
 - Composer/2.5.7 [David Zuelke]
 
-## v233 (2023-04-14)
+## [v233] - 2023-04-14
 
 ### ADD
 
@@ -128,7 +454,7 @@
 - Nginx/1.24.0 [David Zuelke]
 - blackfire/2.15.0 [David Zuelke]
 
-## v232 (2023-03-27)
+## [v232] - 2023-03-27
 
 ### ADD
 
@@ -145,7 +471,7 @@
 - blackfire/2.14.0 [David Zuelke]
 - Composer/2.5.5 [David Zuelke]
 
-## v231 (2023-02-14)
+## [v231] - 2023-02-14
 
 ### ADD
 
@@ -160,7 +486,7 @@
 - Composer/2.2.20 [David Zuelke]
 - Composer/2.5.3 [David Zuelke]
 
-## v230 (2023-02-07)
+## [v230] - 2023-02-07
 
 ### ADD
 
@@ -177,13 +503,13 @@
 
 - `autotune.php` throws deprecation warning on PHP 8.2 (#615) [Simo Heinonen]
 
-## v229 (2023-01-25)
+## [v229] - 2023-01-25
 
 ### ADD
 
 - PHP/8.2.1 [David Zuelke]
 
-## v228 (2023-01-25)
+## [v228] - 2023-01-25
 
 ### ADD
 
@@ -202,7 +528,7 @@
 - Composer/2.5.1 [David Zuelke]
 - Apache/2.4.55 [David Zuelke]
 
-## v227 (2022-11-03)
+## [v227] - 2022-11-03
 
 ### ADD
 
@@ -214,7 +540,7 @@
 
 - Fail if platform packages dir is part of app source [David Zuelke]
 
-## v226 (2022-10-27)
+## [v226] - 2022-10-27
 
 ### ADD
 
@@ -230,7 +556,7 @@
 - Composer/2.4.4 [David Zuelke]
 - Nginx/1.22.1 [David Zuelke]
 
-## v225 (2022-10-05)
+## [v225] - 2022-10-05
 
 ### ADD
 
@@ -247,7 +573,7 @@
 - Composer/2.4.2 [David Zuelke]
 - blackfire/2.12.0 [David Zuelke]
 
-## v224 (2022-09-05)
+## [v224] - 2022-09-05
 
 ### ADD
 
@@ -262,7 +588,7 @@
 - Composer/2.2.18 [David Zuelke]
 - blackfire/2.10.1 [David Zuelke]
 
-## v223 (2022-08-04)
+## [v223] - 2022-08-04
 
 ### ADD
 
@@ -278,7 +604,7 @@
 - Composer/2.3.10 [David Zuelke]
 - librdkafka/1.9.2 [David Zuelke]
 
-## v222 (2022-07-07)
+## [v222] - 2022-07-07
 
 ### ADD
 
@@ -296,7 +622,7 @@
 - Nginx/1.22.0 [David Zuelke]
 - librdkafka/1.9.1 [David Zuelke]
 
-## v221 (2022-07-01)
+## [v221] - 2022-07-01
 
 ### CHG
 
@@ -304,13 +630,13 @@
 - Composer/2.2.15 [David Zuelke]
 - Composer/2.3.8 [David Zuelke]
 
-## v220 (2022-06-15)
+## [v220] - 2022-06-15
 
 ### CHG
 
 - Use recommended AWS regional S3 domain for interactions with platform repository buckets [Ed Morley, David Zuelke]
 
-## v219 (2022-06-09)
+## [v219] - 2022-06-09
 
 ### ADD
 
@@ -325,13 +651,13 @@
 - Composer/2.3.7 [David Zuelke]
 - blackfire/2.10.0 [David Zuelke]
 
-## v218 (2022-05-27)
+## [v218] - 2022-05-27
 
 ### ADD
 
 - Support for heroku-22 stack [David Zuelke]
 
-## v217 (2022-05-18)
+## [v217] - 2022-05-18
 
 ### ADD
 
@@ -344,7 +670,7 @@
 
 - blackfire/2.9.0 [David Zuelke]
 
-## v216 (2022-04-14)
+## [v216] - 2022-04-14
 
 ### ADD
 
@@ -362,13 +688,13 @@
 - Composer/2.3.5 [David Zuelke]
 - blackfire/2.7.1 [David Zuelke]
 
-## v215 (2022-04-08)
+## [v215] - 2022-04-08
 
 ### CHG
 
 - Composer/2.3.4 [David Zuelke]
 
-## v214 (2022-04-04)
+## [v214] - 2022-04-04
 
 ### ADD
 
@@ -378,7 +704,7 @@
 
 - Composer/2.2.11 [David Zuelke]
 
-## v213 (2022-03-17)
+## [v213] - 2022-03-17
 
 ### ADD
 
@@ -395,13 +721,13 @@
 - blackfire/2.7.0 [David Zuelke]
 - Composer/2.2.9 [David Zuelke]
 
-## v212 (2022-02-25)
+## [v212] - 2022-02-25
 
 ### CHG
 
 - Composer/2.2.7 [David Zuelke]
 
-## v211 (2022-02-22)
+## [v211] - 2022-02-22
 
 ### ADD
 
@@ -416,29 +742,29 @@
 - blackfire/2.6.0 [David Zuelke]
 - Composer/2.2.6 [David Zuelke]
 
-## v210 (2022-02-11)
+## [v210] - 2022-02-11
 
 ### CHG
 
 - For any PHP extension declared as `provide`d by a userland package ("polyfill"), attempt explicit installation after main platform install succeeded [David Zuelke]
 
-## v209 (2022-02-10)
+## [v209] - 2022-02-10
 
 (no changes; release bump for rolling out v208 repository update)
 
-## v208 (2022-02-10)
+## [v208] - 2022-02-10
 
 ### CHG
 
 - Treat shared PHP extensions the same as third-party extensions during installation e.g. if userland polyfills declare a `provide` for them [David Zuelke]
 
-## v207 (2022-02-07)
+## [v207] - 2022-02-07
 
 ### CHG
 
 - Allow control of Composer repository priority for entries in `$HEROKU_PHP_PLATFORM_REPOSITORIES` [David Zuelke]
 
-## v206 (2022-02-01)
+## [v206] - 2022-02-01
 
 ### ADD
 
@@ -462,20 +788,20 @@
 
 - Userland packages declaring PHP extensions as provided cause platform installation failure [David Zuelke]
 
-## v205 (2022-01-07)
+## [v205] - 2022-01-07
 
 ### FIX
 
 - `symfony/polyfill-…` packages' `ext-…` `provide` declarations (added in v1.24) cause install failure (#528) [David Zuelke]
 
-## v204 (2022-01-03)
+## [v204] - 2022-01-03
 
 ### CHG
 
 - Composer/2.2.3 [David Zuelke]
 - Forward compatibility for Composer version selection [David Zuelke]
 
-## v203 (2021-12-17)
+## [v203] - 2021-12-17
 
 ## ADD
 
@@ -487,7 +813,7 @@
 - ext-psr/1.1.0 (for PHP 7.2) [David Zuelke]
 - ext-psr/1.2.0 (for PHP 7.3+) [David Zuelke]
 
-## v202 (2012-12-10)
+## [v202] - 2012-12-10
 
 ### ADD
 
@@ -506,7 +832,7 @@
 - Composer/2.1.14 [David Zuelke]
 - Composer/1.10.24 [David Zuelke]
 
-## v201 (2021-11-18)
+## [v201] - 2021-11-18
 
 ### ADD
 
@@ -514,7 +840,7 @@
 - PHP/7.4.26 [Ed Morley]
 - PHP/8.0.13 [Ed Morley]
 
-## v200 (2021-10-28)
+## [v200] - 2021-10-28
 
 ### ADD
 
@@ -533,7 +859,7 @@
 
 - Malformed `$COMPOSER_AUTH` causes app startup failure (#513) [David Zuelke]
 
-## v199 (2021-10-08)
+## [v199] - 2021-10-08
 
 ### ADD
 
@@ -544,7 +870,7 @@
 - Composer/2.1.9 [David Zuelke]
 - Composer/1.10.23 [David Zuelke]
 
-## v198 (2021-09-28)
+## [v198] - 2021-09-28
 
 ### ADD
 
@@ -563,7 +889,7 @@
 - Composer/2.1.8 [David Zuelke]
 - librdkafka/1.8.0 [David Zuelke]
 
-## v197 (2021-08-26)
+## [v197] - 2021-08-26
 
 ### ADD
 
@@ -578,7 +904,7 @@
 
 - Composer/2.1.6 [David Zuelke]
 
-## v196 (2021-07-30)
+## [v196] - 2021-07-30
 
 ### ADD
 
@@ -593,7 +919,7 @@
 
 - Composer/2.1.5 [David Zuelke]
 
-## v195 (2021-07-01)
+## [v195] - 2021-07-01
 
 ### ADD
 
@@ -608,7 +934,7 @@
 - `$HEROKU_PHP_GRACEFUL_SIGTERM` now defaults to "1" on Heroku dynos to enable graceful shutdowns for PHP-FPM, Apache and Nginx [David Zuelke]
 - Composer/2.1.3 [David Zuelke]
 
-## v194 (2021-06-25)
+## [v194] - 2021-06-25
 
 ### ADD
 
@@ -625,7 +951,7 @@
 
 - ext-blackfire attempts to instrument during web dyno startup [David Zuelke]
 
-## v193 (2021-06-07)
+## [v193] - 2021-06-07
 
 ### ADD
 
@@ -646,7 +972,7 @@
 - librdkafka/1.7.0 [David Zuelke]
 - Composer/2.1.2 [David Zuelke]
 
-## v192 (2021-05-06)
+## [v192] - 2021-05-06
 
 ### ADD
 
@@ -666,7 +992,7 @@
 
 - ext-apcu_bc should only be built for PHP 5/7 [David Zuelke]
 
-## v191 (2021-04-15)
+## [v191] - 2021-04-15
 
 ### ADD
 
@@ -682,7 +1008,7 @@
 - Composer/1.10.21 [David Zuelke]
 - Composer/2.0.12 [David Zuelke]
 
-## v190 (2021-03-04)
+## [v190] - 2021-03-04
 
 ### ADD
 
@@ -697,7 +1023,7 @@
 - Composer/2.0.11 [David Zuelke]
 - librdkafka/1.6.1 [David Zuelke]
 
-## v189 (2021-02-05)
+## [v189] - 2021-02-05
 
 ### ADD
 
@@ -720,7 +1046,7 @@
 - Composer/1.10.20 [David Zuelke]
 - Composer/2.0.9 [David Zuelke]
 
-## v188 (2021-01-08)
+## [v188] - 2021-01-08
 
 ### ADD
 
@@ -730,7 +1056,7 @@
 - ext-blackfire/1.48.1 [David Zuelke]
 - ext-rdkafka/4.1.2 [David Zuelke]
 
-## v187 (2020-12-09)
+## [v187] - 2020-12-09
 
 ### ADD
 
@@ -745,7 +1071,7 @@
 
 - ext-redis is missing for PHP 8 (#452) [David Zuelke]
 
-## v186 (2020-12-07)
+## [v186] - 2020-12-07
 
 ### ADD
 
@@ -763,14 +1089,14 @@
 - Composer/1.10.19 [David Zuelke]
 - Composer/2.0.8 [David Zuelke]
 
-## v185 (2020-11-22)
+## [v185] - 2020-11-22
 
 ### FIX
 
 - composer bin-dir is not available on $PATH to subsequent buildpacks [David Zuelke]
 - composer bin-dir exported as relative location in $PATH at runtime [David Zuelke]
 
-## v184 (2020-11-20)
+## [v184] - 2020-11-20
 
 ### ADD
 
@@ -786,7 +1112,7 @@
 
 - ext-newrelic prints info messages during startup regardless of `NEW_RELIC_LOG_LEVEL` [David Zuelke]
 
-## v183 (2020-11-13)
+## [v183] - 2020-11-13
 
 ### ADD
 
@@ -815,13 +1141,13 @@
 
 - Explicit ext-newrelic require outputs info messages during builds [David Zuelke]
 
-## v182 (2020-10-12)
+## [v182] - 2020-10-12
 
 ### ADD
 
 - Support for heroku-20 stack [David Zuelke]
 
-## v181 (2020-10-01)
+## [v181] - 2020-10-01
 
 ### ADD
 
@@ -832,7 +1158,7 @@
 - ext-pq/2.1.8 [David Zuelke]
 - ext-newrelic/9.13.0.270 [David Zuelke]
 
-## v180 (2020-09-15)
+## [v180] - 2020-09-15
 
 ### ADD
 
@@ -846,7 +1172,7 @@
 
 - Composer/1.10.13 [David Zuelke]
 
-## v179 (2020-08-13)
+## [v179] - 2020-08-13
 
 ### ADD
 
@@ -868,7 +1194,7 @@
 
 - Detection of `composer test` or common testing frameworks on Heroku CI occasionally fails on PHP 7.4 (#388) [David Zuelke]
 
-## v178 (2020-07-09)
+## [v178] - 2020-07-09
 
 ### ADD
 
@@ -883,7 +1209,7 @@
 - librdkafka/1.4.4 [David Zuelke]
 - Composer/1.10.8 [David Zuelke]
 
-## v177 (2020-06-18)
+## [v177] - 2020-06-18
 
 ### ADD
 
@@ -897,13 +1223,13 @@
 
 - Composer/1.10.7 [David Zuelke]
 
-## v176 (2020-05-26)
+## [v176] - 2020-05-26
 
 ### FIX
 
 - Fix build failures for apps that also use heroku/python, introduced in 04c5e14 (#412) [David Zuelke]
 
-## v175 (2020-05-25)
+## [v175] - 2020-05-25
 
 ### ADD
 
@@ -923,7 +1249,7 @@
 - librdkafka/1.4.2 [David Zuelke]
 - libcassandra/2.15.2 [David Zuelke]
 
-## v174 (2020-04-30)
+## [v174] - 2020-04-30
 
 ### ADD
 
@@ -941,7 +1267,7 @@
 - Composer/1.10.5 [David Zuelke]
 - librdkafka/1.4.0 [David Zuelke]
 
-## v173 (2020-03-20)
+## [v173] - 2020-03-20
 
 ### ADD
 
@@ -957,7 +1283,7 @@
 - Composer/1.10.1 [David Zuelke]
 - libcassandra/2.15.1 [David Zuelke]
 
-## v172 (2020-02-28)
+## [v172] - 2020-02-28
 
 ### ADD
 
@@ -979,7 +1305,7 @@
 - Use system libsqlite on heroku-16 and heroku-18 stacks [David Zuelke]
 - Use system libonig on heroku-16 and heroku-18 stacks [David Zuelke]
 
-## v171 (2020-02-11)
+## [v171] - 2020-02-11
 
 ### ADD
 
@@ -994,7 +1320,7 @@
 
 - Composer/1.9.3 [David Zuelke]
 
-## v170 (2020-02-10)
+## [v170] - 2020-02-10
 
 ### ADD
 
@@ -1013,7 +1339,7 @@
 - Use all available instance RAM when calculating `$WEB_CONCURRENCY` for PHP 7.4+ running on Performance-L dynos [David Zuelke]
 - Use all available instance RAM as default PHP CLI memory_limit [David Zuelke]
 
-## v169 (2020-01-26)
+## [v169] - 2020-01-26
 
 ### CHG
 
@@ -1024,7 +1350,7 @@
 - Shell may emit confusing "... Terminated ..." messages on shutdown [David Zuelke]
 - PHP-FPM startup failures may trigger race condition where dyno boot hangs [David Zuelke]
 
-## v168 (2020-01-24)
+## [v168] - 2020-01-24
 
 ### ADD
 
@@ -1039,7 +1365,7 @@
 - Composer/1.9.2 [David Zuelke]
 - libcassandra/2.15.0 [David Zuelke]
 
-## v167 (2020-01-23)
+## [v167] - 2020-01-23
 
 ### CHG
 
@@ -1047,7 +1373,7 @@
 - Dynamically poll for `newrelic-daemon` readiness on dyno boot instead of using blanket two-second wait [David Zuelke]
 - Dynamically poll for PHP-FPM readiness on dyno boot instead of using blanket two-second wait [David Zuelke]
 
-## v166 (2019-12-20)
+## [v166] - 2019-12-20
 
 ### ADD
 
@@ -1055,7 +1381,7 @@
 - PHP/7.3.13 [David Zuelke]
 - ext-rdkafka/4.0.2 [David Zuelke]
 
-## v165 (2019-12-11)
+## [v165] - 2019-12-11
 
 ### ADD
 
@@ -1085,7 +1411,7 @@
 - Revert ext-newrelic/9.2.0.247 due to startup failure [David Zuelke]
 - PHP 7.0 builds picking up generic rather than version-specific `heroku.ini` settings [David Zuelke]
 
-## v164 (2019-10-24)
+## [v164] - 2019-10-24
 
 ### ADD
 
@@ -1101,13 +1427,13 @@
 - Bump `heroku-16.Dockerfile` and `heroku-18.Dockerfile` to tag v18 [David Zuelke]
 - librdkafka/1.2.1 [David Zuelke]
 
-## v163 (2019-10-01)
+## [v163] - 2019-10-01
 
 ### CHG
 
 - Pin `heroku-18.Dockerfile` to use `heroku/heroku:18-build.v16` to ensure builds against libssl 1.1.0 until Private Spaces are fully upgraded [David Zuelke]
 
-## v162 (2019-09-27)
+## [v162] - 2019-09-27
 
 ### ADD
 
@@ -1122,7 +1448,7 @@
 
 - librdkafka/1.2.0 [David Zuelke]
 
-## v161 (2019-08-30)
+## [v161] - 2019-08-30
 
 ### ADD
 
@@ -1134,7 +1460,7 @@
 
 - Build PHP with libwebp for ext-gd on heroku-18 (#358) [David Zuelke]
 
-## v160 (2019-08-23)
+## [v160] - 2019-08-23
 
 ### ADD
 
@@ -1152,7 +1478,7 @@
 
 - Fix HHVM boot scripts failing if a `composer` shell function is present [David Zuelke]
 
-## v159 (2019-08-06)
+## [v159] - 2019-08-06
 
 ### ADD
 
@@ -1176,7 +1502,7 @@
 
 - Boot scripts no longer use `php -n` to prevent APM extensions from booting, but instead add an INI file that contains disabling directives for common extensions (#345, #348, #349) [David Zuelke]
 
-## v158 (2019-07-04)
+## [v158] - 2019-07-04
 
 ### ADD
 
@@ -1193,7 +1519,7 @@
 - libcassandra/2.13.0 [David Zuelke]
 - librdkafka/1.1.0 [David Zuelke]
 
-## v157 (2019-06-13)
+## [v157] - 2019-06-13
 
 ### ADD
 
@@ -1211,7 +1537,7 @@
 - Bug in Apache 2.4.39 (https://bz.apache.org/bugzilla/show_bug.cgi?id=63325) causes 408 timeout after 20 seconds on long file uploads (#342) [David Zuelke]
 - Phalcon 3.4.3 segfaults on latest PHP 7.3.6 [David Zuelke]
 
-## v156 (2019-05-30)
+## [v156] - 2019-05-30
 
 ### ADD
 
@@ -1236,7 +1562,7 @@
 - `url_rewriter.tags` INI directive is set to an outdated default value for some PHP versions [David Zuelke]
 - PHP assertions should be disabled in prod mode (#242) [David Zuelke]
 
-## v155 (2019-05-09)
+## [v155] - 2019-05-09
 
 ### ADD
 
@@ -1252,7 +1578,7 @@
 - Composer/1.8.5 [David Zuelke]
 - libcassandra/2.12.0 [David Zuelke]
 
-## v154 (2019-04-04)
+## [v154] - 2019-04-04
 
 ### ADD
 
@@ -1266,14 +1592,14 @@
 - librdkafka/1.0.0 [David Zuelke]
 - libcassandra/2.11.0 [David Zuelke]
 
-## v153 (2019-03-18)
+## [v153] - 2019-03-18
 
 ### ADD
 
 - ext-newrelic/8.6.0.238 [David Zuelke]
 - ext-redis/4.3.0 [David Zuelke]
 
-## v152 (2019-03-13)
+## [v152] - 2019-03-13
 
 ### ADD
 
@@ -1285,7 +1611,7 @@
 - Restructure Nginx configs and add compatibility with Nginx/1.9.3+ (#198) [David Zuelke]
 - Build Nginx with `ngx_http_ssl_module` (#182) [David Zuelke]
 
-## v151 (2019-03-08)
+## [v151] - 2019-03-08
 
 ### ADD
 
@@ -1299,7 +1625,7 @@
 
 - Composer/1.8.4 [David Zuelke]
 
-## v150 (2019-02-07)
+## [v150] - 2019-02-07
 
 ### ADD
 
@@ -1316,7 +1642,7 @@
 
 - ext-oauth doesn't find libcurl headers on heroku-18 (#322) [David Zuelke]
 
-## v149 (2019-01-14)
+## [v149] - 2019-01-14
 
 ### ADD
 
@@ -1336,7 +1662,7 @@
 
 - Boot scripts fail without GNU realpath or GNU readlink (#317) [David Zuelke]
 
-## v148 (2018-12-20)
+## [v148] - 2018-12-20
 
 ### ADD
 
@@ -1349,7 +1675,7 @@
 
 - BSD grep doesn't support Perl expression mode (#311) [David Zuelke]
 
-## v147 (2018-12-13)
+## [v147] - 2018-12-13
 
 ### ADD
 
@@ -1371,7 +1697,7 @@
 - Apply non-default opcache INI settings only to the PHP 5 builds that need them [David Zuelke]
 - Composer/1.8.0 [David Zuelke]
 
-## v146 (2018-11-08)
+## [v146] - 2018-11-08
 
 ### ADD
 
@@ -1384,7 +1710,7 @@
 - Translate `NEW_RELIC_LOG_LEVEL` values "verbose" and "verbosedebug" to "debug" for `newrelic-daemon` [David Zuelke]
 - librdkafka/0.11.6 [David Zuelke]
 
-## v145 (2019-10-16)
+## [v145] - 2019-10-16
 
 ### ADD
 
@@ -1399,7 +1725,7 @@
 
 - Nginx reports "localhost" instead of requested hostname in SERVER_NAME FastCGI variable (#264) [David Zuelke]
 
-## v144 (2019-09-13)
+## [v144] - 2019-09-13
 
 ### ADD
 
@@ -1416,7 +1742,7 @@
 - Warn users of PHP versions that are close to, or have reached, end of life or end of active support [David Zuelke]
 - Default to listen.mode=0666 for PHP-FPM socket to allow running in both Heroku Dynos and containers [David Zuelke]
 
-## v143 (2018-08-17)
+## [v143] - 2018-08-17
 
 ### ADD
 
@@ -1428,13 +1754,13 @@
 
 - Composer/1.7.2 [David Zuelke]
 
-## v142 (2018-08-08)
+## [v142] - 2018-08-08
 
 ### FIX
 
 - Check for 'minimum-stability' may fail if no 'composer.lock' present [David Zuelke]
 
-## v141 (2018-08-07)
+## [v141] - 2018-08-07
 
 ### ADD
 
@@ -1453,7 +1779,7 @@
 
 - Generate Composer package repositories with empty JSON objects, not arrays, where required by Composer 1.7+ [David Zuelke]
 
-## v140 (2018-07-25)
+## [v140] - 2018-07-25
 
 ### CHG
 
@@ -1467,7 +1793,7 @@
 
 - stdlib download during build init may theoretically fail on download restart [David Zuelke]
 
-## v139 (2018-07-20)
+## [v139] - 2018-07-20
 
 ### ADD
 
@@ -1482,7 +1808,7 @@
 
 - librdkafka/0.11.5 [David Zuelke]
 
-## v138 (2018-07-10)
+## [v138] - 2018-07-10
 
 ### ADD
 
@@ -1495,7 +1821,7 @@
 
 - PHP 7 built with --enable-opcache-file only on cedar-14 [David Zuelke]
 
-## v137 (2018-06-26)
+## [v137] - 2018-06-26
 
 ### ADD
 
@@ -1510,7 +1836,7 @@
 
 - New Relic daemon location is broken in PHP INI [David Zuelke]
 
-## v136 (2018-05-24)
+## [v136] - 2018-05-24
 
 ### ADD
 
@@ -1524,7 +1850,7 @@
 - Default to PHP 7 for heroku-18 and later [David Zuelke]
 - Composer/1.6.5 [David Zuelke]
 
-## v135 (2018-04-26)
+## [v135] - 2018-04-26
 
 ### ADD
 
@@ -1540,7 +1866,7 @@
 - Composer/1.6.4 [David Zuelke]
 - libcassandra/2.9.0 [David Zuelke]
 
-## v134 (2018-03-30)
+## [v134] - 2018-03-30
 
 ### ADD
 
@@ -1558,13 +1884,13 @@
 
 - librdkafka/0.11.4 [David Zuelke]
 
-## v133 (2018-03-21)
+## [v133] - 2018-03-21
 
 ### CHG
 
 - Internal changes only [David Zuelke]
 
-## v132 (2018-03-02)
+## [v132] - 2018-03-02
 
 ### ADD
 
@@ -1580,7 +1906,7 @@
 
 - libcassandra/2.8.1 [David Zuelke]
 
-## v131 (2018-02-12)
+## [v131] - 2018-02-12
 
 ### ADD
 
@@ -1595,13 +1921,13 @@
 - Composer/1.6.3 [David Zuelke]
 - Use Linux abstract socket for New Relic daemon communications [David Zuelke]
 
-## v130 (2018-01-11)
+## [v130] - 2018-01-11
 
 ### ADD
 
 - ext-newrelic/7.7.0.203 [David Zuelke]
 
-## v129 (2018-01-10)
+## [v129] - 2018-01-10
 
 ### ADD
 
@@ -1612,7 +1938,7 @@
 
 - Composer/1.6.2 [David Zuelke]
 
-## v128 (2018-01-04)
+## [v128] - 2018-01-04
 
 ### ADD
 
@@ -1631,7 +1957,7 @@
 - Composer/1.6.0 [David Zuelke]
 - librdkafka/0.11.3 [David Zuelke]
 
-## v127 (2017-11-30)
+## [v127] - 2017-11-30
 
 ### ADD
 
@@ -1651,7 +1977,7 @@
 - Heroku\Buildpack\PHP\Downloader::download() is missing optional third argument [David Zuelke]
 - Files like `composer.js` or similar are inaccessible in web root (#247) [David Zuelke]
 
-## v126 (2017-10-29)
+## [v126] - 2017-10-29
 
 ### ADD
 
@@ -1675,7 +2001,7 @@
 
 - gmp.h lookup patching broken since v125 / d024b14 [David Zuelke]
 
-## v125 (2017-10-04)
+## [v125] - 2017-10-04
 
 ### ADD
 
@@ -1689,13 +2015,13 @@
 
 - Composer/1.5.2 [David Zuelke]
 
-## v124 (2017-09-07)
+## [v124] - 2017-09-07
 
 ### FIX
 
 - Use Composer/1.5.1 [David Zuelke]
 
-## v123 (2017-09-07)
+## [v123] - 2017-09-07
 
 ### ADD
 
@@ -1719,7 +2045,7 @@
 - librdkafka/0.11.0 [David Zuelke]
 - Composer/1.5.1 [David Zuelke]
 
-## v122 (2017-08-03)
+## [v122] - 2017-08-03
 
 ### ADD
 
@@ -1741,7 +2067,7 @@
 - Composer/1.4.2 [David Zuelke]
 - Do not error if buildpack package is installed during Heroku CI runs [David Zuelke]
 
-## v121 (2017-03-28)
+## [v121] - 2017-03-28
 
 ### ADD
 
@@ -1768,7 +2094,7 @@
 
 - Failed download during bootstrap fails without meaningful error message [David Zuelke]
 
-## v120 (2017-02-20)
+## [v120] - 2017-02-20
 
 ### ADD
 
@@ -1789,14 +2115,14 @@
 - librdkafka/0.9.3 [David Zuelke]
 - Enable `mod_proxy_wstunnel` in Apache config [David Zuelke]
 
-## v119 (2017-01-21)
+## [v119] - 2017-01-21
 
 ### FIX
 
 - Revert: ext-redis/3.1.0 [David Zuelke]
 - Revert: Composer/1.3.1 [David Zuelke]
 
-## v118 (2017-01-20)
+## [v118] - 2017-01-20
 
 ### ADD
 
@@ -1817,7 +2143,7 @@
 - Ignore `WEB_CONCURRENCY` values with leading zeroes [David Zuelke]
 - Default `NEW_RELIC_APP_NAME` to `HEROKU_APP_NAME` [Christophe Coevoet]
 
-## v117 (2016-12-09)
+## [v117] - 2016-12-09
 
 ### ADD
 
@@ -1830,7 +2156,7 @@
 
 - Composer/1.2.4 [David Zuelke]
 
-## v116 (2016-12-01)
+## [v116] - 2016-12-01
 
 ### ADD
 
@@ -1843,7 +2169,7 @@
 
 - Implicit and explicit stability flags for platform packages got ignored [David Zuelke]
 
-## v115 (2016-11-23)
+## [v115] - 2016-11-23
 
 ### ADD
 
@@ -1853,7 +2179,7 @@
 
 - composer.json "require" or dependencies must now contain a runtime version requirement if "require-dev" or dependencies contain one [David Zuelke]
 
-## v114 (2016-11-10)
+## [v114] - 2016-11-10
 
 ### ADD
 
@@ -1869,7 +2195,7 @@
 - Composer/1.2.2 [David Zuelke]
 - Update to librdkafka-0.9.2 final for ext-rdkafka [David Zuelke]
 
-## v113 (2016-10-19)
+## [v113] - 2016-10-19
 
 ### ADD
 
@@ -1881,13 +2207,13 @@
 - ext-rdkafka/1.0.0 [David Zuelke]
 - ext-rdkafka/2.0.0 [David Zuelke]
 
-## v112 (2016-09-20)
+## [v112] - 2016-09-20
 
 ### FIX
 
 - Use Composer/1.2.1 [David Zuelke]
 
-## v111 (2016-09-20)
+## [v111] - 2016-09-20
 
 ### ADD
 
@@ -1899,7 +2225,7 @@
 
 - Use Composer/1.2.1 [David Zuelke]
 
-## v110 (2016-08-26)
+## [v110] - 2016-08-26
 
 ### ADD
 
@@ -1917,7 +2243,7 @@
 - Retry downloads up to three times during bootstrapping [David Zuelke]
 - Composer/1.2.0 [David Zuelke]
 
-## v109 (2016-07-21)
+## [v109] - 2016-07-21
 
 ### ADD
 
@@ -1925,7 +2251,7 @@
 - PHP/5.6.24 [David Zuelke]
 - PHP/5.5.38 [David Zuelke]
 
-## v108 (2016-07-08)
+## [v108] - 2016-07-08
 
 ### ADD
 
@@ -1944,7 +2270,7 @@
 
 - Revert to ext-redis/2.2.7 due to reported segfaults/memleaks [David Zuelke]
 
-## v107 (2016-06-18)
+## [v107] - 2016-06-18
 
 ### ADD
 
@@ -1957,7 +2283,7 @@
 
 - Custom `COMPOSER` env var breaks platform installs [David Zuelke]
 
-## v106 (2016-06-08)
+## [v106] - 2016-06-08
 
 ### ADD
 
@@ -1970,7 +2296,7 @@
 
 - Use Composer/1.1.2 [David Zuelke]
 
-## v105 (2016-05-27)
+## [v105] - 2016-05-27
 
 ### ADD
 
@@ -1978,13 +2304,13 @@
 - PHP/5.6.22 [David Zuelke]
 - PHP/7.0.7 [David Zuelke]
 
-## v104 (2016-05-20)
+## [v104] - 2016-05-20
 
 ### ADD
 
 - ext-pq/1.1.1 and 2.1.1 [David Zuelke]
 
-## v103 (2016-05-20)
+## [v103] - 2016-05-20
 
 ### ADD
 
@@ -1997,7 +2323,7 @@
 
 - Composer/1.1.1 [David Zuelke]
 
-## v102 (2016-04-29)
+## [v102] - 2016-04-29
 
 ### ADD
 
@@ -2017,7 +2343,7 @@
 - Build PHP with `php-cgi` executable [David Zuelke]
 - Composer/1.0.3 [David Zuelke]
 
-## v101 (2016-04-12)
+## [v101] - 2016-04-12
 
 ### ADD
 
@@ -2030,7 +2356,7 @@
 
 - Use Composer/1.0.0 stable [David Zuelke]
 
-## v100 (2016-03-31)
+## [v100] - 2016-03-31
 
 ### ADD
 
@@ -2046,13 +2372,13 @@
 - Use Composer/1.0.0beta2 [David Zuelke]
 - Use first configured platform repository to load components for bootstrapping [David Zuelke]
 
-## v99 (2016-03-23)
+## [v99] - 2016-03-23
 
 ### FIX
 
 - Automatic extensions (blackfire, newrelic) may fail to get installed with many dependencies [David Zuelke]
 
-## v98 (2016-03-21)
+## [v98] - 2016-03-21
 
 ### ADD
 
@@ -2068,13 +2394,13 @@
 - Remove GitHub API rate limit checks during build time [David Zuelke]
 - Change pcre.jit to 0 in php.ini [David Zuelke]
 
-## v97 (2016-03-10)
+## [v97] - 2016-03-10
 
 ### CHG
 
 - Temporarily downgrade to ext-newrelic/5.1.1.130 [David Zuelke]
 
-## v96 (2016-03-10)
+## [v96] - 2016-03-10
 
 ### ADD
 
@@ -2102,7 +2428,7 @@
 
 - Platform installer is incompatible with PHP 5.5 [David Zuelke]
 
-## v95 (2016-03-03)
+## [v95] - 2016-03-03
 
 ### ADD
 
@@ -2113,13 +2439,13 @@
 - Nginx/1.8.1 [David Zuelke]
 - Apache/2.4.18 [David Zuelke]
 
-## v94 (2016-02-26)
+## [v94] - 2016-02-26
 
 ### FIX
 
 - No web servers get selected when a `composer.lock` is missing [David Zuelke]
 
-## v93 (2016-02-26)
+## [v93] - 2016-02-26
 
 ### ADD
 
@@ -2144,7 +2470,7 @@
 - Manifest for ext-memcached/2.2.0 declares wrong PHP requirement for PHP 5.6 build [David Zuelke]
 - Setting `NEW_RELIC_CONFIG_FILE` breaks HHVM builds (#149) [David Zuelke]
 
-## v92 (2016-02-09)
+## [v92] - 2016-02-09
 
 ### ADD
 
@@ -2165,7 +2491,7 @@
 - PHP 7 extension formulae use wrong API version in folder name [David Zuelke]
 - Composer build formula depends on removed PHP formula [Stefan Siegl]
 
-## v91 (2016-01-08)
+## [v91] - 2016-01-08
 
 ### ADD
 
@@ -2177,7 +2503,7 @@
 - ext-mongodb/1.1.2 [David Zuelke]
 - ext-oauth/2.0.0 [David Zuelke]
 
-## v90 (2015-12-18)
+## [v90] - 2015-12-18
 
 ### ADD
 
@@ -2187,13 +2513,13 @@
 
 - Double default INI setting values for `opcache.memory_consumption`, `opcache.interned_strings_buffer` and `opcache.max_accelerated_files` [David Zuelke]
 
-## v89 (2015-12-15)
+## [v89] - 2015-12-15
 
 ### FIX
 
 - HHVM builds failing when trying to install New Relic or Blackfire [David Zuelke]
 
-## v88 (2015-12-15)
+## [v88] - 2015-12-15
 
 ### CHG
 
@@ -2207,7 +2533,7 @@
 - `lib-` platform package requirements may prevent dependency resolution [David Zuelke]
 - Invalid/broken `composer.lock` produces confusing error message [David Zuelke]
 
-## v87 (2015-12-11)
+## [v87] - 2015-12-11
 
 ### CHG
 
@@ -2219,7 +2545,7 @@
 - "`|`" operators in `composer.lock` platform package requirements break system package dependency resolution [David Zuelke]
 - Notice about missing runtime version selector does not show up in all cases [David Zuelke]
 
-## v86 (2015-12-10)
+## [v86] - 2015-12-10
 
 ### ADD
 
@@ -2234,7 +2560,7 @@
 
 - Rewrite most of the build process; system packages are now installed using a custom Composer installer and Composer repository [David Zuelke]
 
-## v83 (2015-11-16)
+## [v83] - 2015-11-16
 
 ### ADD
 
@@ -2253,20 +2579,20 @@
 - Build failure if `heroku-*-*` boot scripts are committed to Git in Composer bin dir [David Zuelke]
 - Broken signal handling in boot scripts on Linux [David Zuelke]
 
-## v82 (2015-10-31)
+## [v82] - 2015-10-31
 
 ### CHG
 
 - Downgrade Apache 2.4.17 to Apache 2.4.16 due to `REDIRECT_URL` regression [David Zuelke]
 
-## v81 (2015-10-30)
+## [v81] - 2015-10-30
 
 ### ADD
 
 - PHP/7.0.0RC6 [David Zuelke]
 - PHP/5.6.15 [David Zuelke]
 
-## v80 (2015-10-15)
+## [v80] - 2015-10-15
 
 ### ADD
 
@@ -2278,13 +2604,13 @@
 
 - Use system default php.ini config instead of buildpacks' if no custom config given [David Zuelke]
 
-## v79 (2015-10-08)
+## [v79] - 2015-10-08
 
 ### CHG
 
 - Enable Apache modules `ssl_module` and `mod_proxy_html` (with `mod_xml2enc` dependency) by default [David Zuelke]
 
-## v78 (2015-10-01)
+## [v78] - 2015-10-01
 
 ### ADD
 
@@ -2292,13 +2618,13 @@
 - PHP/5.5.30 [David Zuelke]
 - PHP/5.6.14 [David Zuelke]
 
-## v77 (2015-09-17)
+## [v77] - 2015-09-17
 
 ### ADD
 
 - PHP/7.0.0RC3 [David Zuelke]
 
-## v76 (2015-09-08)
+## [v76] - 2015-09-08
 
 ### ADD
 
@@ -2307,19 +2633,19 @@
 - PHP/5.5.29 [David Zuelke]
 - PHP/5.6.13 [David Zuelke]
 
-## v75 (2015-08-21)
+## [v75] - 2015-08-21
 
 ### FIX
 
 - Prevent potential (benign) Python notice during builds
 
-## v74 (2015-08-21)
+## [v74] - 2015-08-21
 
 ### FIX
 
 - Warning about missing composer.lock is thrown incorrectly for some composer.json files
 
-## v72 (2015-08-21)
+## [v72] - 2015-08-21
 
 ### ADD
 
@@ -2333,7 +2659,7 @@
 
 - A composer.lock is now required if there is any entry in the "require" section of composer.json [David Zuelke]
 
-## v71 (2015-07-14)
+## [v71] - 2015-07-14
 
 ### ADD
 
@@ -2344,7 +2670,7 @@
 - Apache `mod_proxy_fgci`'s "disablereuse=off" config flag causes intermittent blank pages with HTTPD 2.4.11+ [David Zuelke]
 - Applications on cedar-10 can select non-existing PHP 7.0.0beta1 package via composer.json [David Zuelke]
 
-## v70 (2015-07-10)
+## [v70] - 2015-07-10
 
 ### ADD
 
@@ -2359,7 +2685,7 @@
 
 - Warn about missing extensions for "blackfire" and "newrelic" add-ons during startup [David Zuelke]
 
-## v69 (2015-06-12)
+## [v69] - 2015-06-12
 
 ### ADD
 
@@ -2368,7 +2694,7 @@
 - ext-newrelic/4.22.0.99 [David Zuelke]
 - ext-mongo/1.6.9 [David Zuelke]
 
-## v68 (2015-05-18)
+## [v68] - 2015-05-18
 
 ### ADD
 
@@ -2387,7 +2713,7 @@
 - Typo in log messages [Christophe Coevoet]
 - Newrelic 4.21 agent startup complaining about missing pidfile location config [David Zuelke]
 
-## v67 (2015-03-24)
+## [v67] - 2015-03-24
 
 ### ADD
 
@@ -2400,13 +2726,13 @@
 - Don't run composer install for empty composer.json [David Zuelke]
 - Unset GIT_DIR at beginning of compile [David Zuelke]
 
-## v66 (2015-03-05)
+## [v66] - 2015-03-05
 
 ### ADD
 
 - ext-newrelic/4.19.0.90 [David Zuelke]
 
-## v65 (2015-03-03)
+## [v65] - 2015-03-03
 
 ### ADD
 
@@ -2418,7 +2744,7 @@
 
 - Composer uses stderr now for most output, indent that accordingly [David Zuelke]
 
-## v64 (2015-02-19)
+## [v64] - 2015-02-19
 
 ### ADD
 
@@ -2428,7 +2754,7 @@
 - ext-newrelic/4.18.0.89 [David Zuelke]
 - ext-mongo/1.6.3 [David Zuelke]
 
-## v63 (2015-02-11)
+## [v63] - 2015-02-11
 
 ### ADD
 
@@ -2446,13 +2772,13 @@
 
 - Incorrect 'child 123 said into stderr' removal for lines that are deemed to long by FPM and cut off using a terminating '...' sequence instead of closing double quotes [David Zuelke]
 
-## v62 (2015-02-04)
+## [v62] - 2015-02-04
 
 ### FIX
 
 - Broken PHP memlimit check [David Zuelke]
 
-## v61 (2015-02-04)
+## [v61] - 2015-02-04
 
 ### CHG
 
@@ -2462,13 +2788,13 @@
 
 - Workaround for Composer's complaining about outdated version warnings on stdout instead of stderr, breaking calls in a few places under certain circumstances [David Zuelke]
 
-## v60 (2015-02-04)
+## [v60] - 2015-02-04
 
 ### ADD
 
 - Auto-tune number of workers based on dyno size and configured memory limit [David Zuelke]
 
-## v59 (2015-01-29)
+## [v59] - 2015-01-29
 
 ### ADD
 
@@ -2479,7 +2805,7 @@
 - Improvements to INI handling for HHVM, including new `-I` switch to allow passing additional INI files at boot [David Zuelke]
 - Massively improved subprocess and signal handling in boot scripts [David Zuelke]
 
-## v58 (2015-01-26)
+## [v58] - 2015-01-26
 
 ### ADD
 
@@ -2487,13 +2813,13 @@
 - PHP/5.6.5 [David Zuelke]
 - PHP/5.5.21 [David Zuelke]
 
-## v57 (2015-01-19)
+## [v57] - 2015-01-19
 
 ### CHG
 
 - Update to Composer dev version for `^` selector support [David Zuelke]
 
-## v56 (2015-01-13)
+## [v56] - 2015-01-13
 
 ### ADD
 
@@ -2501,13 +2827,13 @@
 - HHVM/3.3.3 [David Zuelke]
 - Run 'composer compile' for custom scripts at the end of deploy [David Zuelke]
 
-## v55 (2015-01-07)
+## [v55] - 2015-01-07
 
 ### FIX
 
 - Standard logs have the wrong $PORT in the file name if the -p option is used in boot scripts [David Zuelke]
 
-## v54 (2015-01-05)
+## [v54] - 2015-01-05
 
 ### ADD
 
@@ -2516,3 +2842,215 @@
 ### CHG
 
 - Auto-set and follow (but not enable, for now) the FPM slowlog [David Zuelke]
+
+[unreleased]: https://github.com/heroku/heroku-buildpack-php/compare/v263...main
+[v263]: https://github.com/heroku/heroku-buildpack-php/compare/v262...v263
+[v262]: https://github.com/heroku/heroku-buildpack-php/compare/v261...v262
+[v261]: https://github.com/heroku/heroku-buildpack-php/compare/v260...v261
+[v260]: https://github.com/heroku/heroku-buildpack-php/compare/v259...v260
+[v259]: https://github.com/heroku/heroku-buildpack-php/compare/v258...v259
+[v258]: https://github.com/heroku/heroku-buildpack-php/compare/v257...v258
+[v257]: https://github.com/heroku/heroku-buildpack-php/compare/v256...v257
+[v256]: https://github.com/heroku/heroku-buildpack-php/compare/v255...v256
+[v255]: https://github.com/heroku/heroku-buildpack-php/compare/v254...v255
+[v254]: https://github.com/heroku/heroku-buildpack-php/compare/v253...v254
+[v253]: https://github.com/heroku/heroku-buildpack-php/compare/v252...v253
+[v252]: https://github.com/heroku/heroku-buildpack-php/compare/v251...v252
+[v251]: https://github.com/heroku/heroku-buildpack-php/compare/v250...v251
+[v250]: https://github.com/heroku/heroku-buildpack-php/compare/v249...v250
+[v249]: https://github.com/heroku/heroku-buildpack-php/compare/v248...v249
+[v248]: https://github.com/heroku/heroku-buildpack-php/compare/v247...v248
+[v247]: https://github.com/heroku/heroku-buildpack-php/compare/v246...v247
+[v246]: https://github.com/heroku/heroku-buildpack-php/compare/v245...v246
+[v245]: https://github.com/heroku/heroku-buildpack-php/compare/v244...v245
+[v244]: https://github.com/heroku/heroku-buildpack-php/compare/v243...v244
+[v243]: https://github.com/heroku/heroku-buildpack-php/compare/v242...v243
+[v242]: https://github.com/heroku/heroku-buildpack-php/compare/v241...v242
+[v241]: https://github.com/heroku/heroku-buildpack-php/compare/v240...v241
+[v240]: https://github.com/heroku/heroku-buildpack-php/compare/v239...v240
+[v239]: https://github.com/heroku/heroku-buildpack-php/compare/v238...v239
+[v238]: https://github.com/heroku/heroku-buildpack-php/compare/v237...v238
+[v237]: https://github.com/heroku/heroku-buildpack-php/compare/v236...v237
+[v236]: https://github.com/heroku/heroku-buildpack-php/compare/v235...v236
+[v235]: https://github.com/heroku/heroku-buildpack-php/compare/v234...v235
+[v234]: https://github.com/heroku/heroku-buildpack-php/compare/v233...v234
+[v233]: https://github.com/heroku/heroku-buildpack-php/compare/v232...v233
+[v232]: https://github.com/heroku/heroku-buildpack-php/compare/v231...v232
+[v231]: https://github.com/heroku/heroku-buildpack-php/compare/v230...v231
+[v230]: https://github.com/heroku/heroku-buildpack-php/compare/v229...v230
+[v229]: https://github.com/heroku/heroku-buildpack-php/compare/v228...v229
+[v228]: https://github.com/heroku/heroku-buildpack-php/compare/v227...v228
+[v227]: https://github.com/heroku/heroku-buildpack-php/compare/v226...v227
+[v226]: https://github.com/heroku/heroku-buildpack-php/compare/v225...v226
+[v225]: https://github.com/heroku/heroku-buildpack-php/compare/v224...v225
+[v224]: https://github.com/heroku/heroku-buildpack-php/compare/v223...v224
+[v223]: https://github.com/heroku/heroku-buildpack-php/compare/v222...v223
+[v222]: https://github.com/heroku/heroku-buildpack-php/compare/v221...v222
+[v221]: https://github.com/heroku/heroku-buildpack-php/compare/v220...v221
+[v220]: https://github.com/heroku/heroku-buildpack-php/compare/v219...v220
+[v219]: https://github.com/heroku/heroku-buildpack-php/compare/v218...v219
+[v218]: https://github.com/heroku/heroku-buildpack-php/compare/v217...v218
+[v217]: https://github.com/heroku/heroku-buildpack-php/compare/v216...v217
+[v216]: https://github.com/heroku/heroku-buildpack-php/compare/v215...v216
+[v215]: https://github.com/heroku/heroku-buildpack-php/compare/v214...v215
+[v214]: https://github.com/heroku/heroku-buildpack-php/compare/v213...v214
+[v213]: https://github.com/heroku/heroku-buildpack-php/compare/v212...v213
+[v212]: https://github.com/heroku/heroku-buildpack-php/compare/v211...v212
+[v211]: https://github.com/heroku/heroku-buildpack-php/compare/v210...v211
+[v210]: https://github.com/heroku/heroku-buildpack-php/compare/v209...v210
+[v209]: https://github.com/heroku/heroku-buildpack-php/compare/v208...v209
+[v208]: https://github.com/heroku/heroku-buildpack-php/compare/v207...v208
+[v207]: https://github.com/heroku/heroku-buildpack-php/compare/v206...v207
+[v206]: https://github.com/heroku/heroku-buildpack-php/compare/v205...v206
+[v205]: https://github.com/heroku/heroku-buildpack-php/compare/v204...v205
+[v204]: https://github.com/heroku/heroku-buildpack-php/compare/v203...v204
+[v203]: https://github.com/heroku/heroku-buildpack-php/compare/v202...v203
+[v202]: https://github.com/heroku/heroku-buildpack-php/compare/v201...v202
+[v201]: https://github.com/heroku/heroku-buildpack-php/compare/v200...v201
+[v200]: https://github.com/heroku/heroku-buildpack-php/compare/v199...v200
+[v199]: https://github.com/heroku/heroku-buildpack-php/compare/v198...v199
+[v198]: https://github.com/heroku/heroku-buildpack-php/compare/v197...v198
+[v197]: https://github.com/heroku/heroku-buildpack-php/compare/v196...v197
+[v196]: https://github.com/heroku/heroku-buildpack-php/compare/v195...v196
+[v195]: https://github.com/heroku/heroku-buildpack-php/compare/v194...v195
+[v194]: https://github.com/heroku/heroku-buildpack-php/compare/v193...v194
+[v193]: https://github.com/heroku/heroku-buildpack-php/compare/v192...v193
+[v192]: https://github.com/heroku/heroku-buildpack-php/compare/v191...v192
+[v191]: https://github.com/heroku/heroku-buildpack-php/compare/v190...v191
+[v190]: https://github.com/heroku/heroku-buildpack-php/compare/v189...v190
+[v189]: https://github.com/heroku/heroku-buildpack-php/compare/v188...v189
+[v188]: https://github.com/heroku/heroku-buildpack-php/compare/v187...v188
+[v187]: https://github.com/heroku/heroku-buildpack-php/compare/v186...v187
+[v186]: https://github.com/heroku/heroku-buildpack-php/compare/v185...v186
+[v185]: https://github.com/heroku/heroku-buildpack-php/compare/v184...v185
+[v184]: https://github.com/heroku/heroku-buildpack-php/compare/v183...v184
+[v183]: https://github.com/heroku/heroku-buildpack-php/compare/v182...v183
+[v182]: https://github.com/heroku/heroku-buildpack-php/compare/v181...v182
+[v181]: https://github.com/heroku/heroku-buildpack-php/compare/v180...v181
+[v180]: https://github.com/heroku/heroku-buildpack-php/compare/v179...v180
+[v179]: https://github.com/heroku/heroku-buildpack-php/compare/v178...v179
+[v178]: https://github.com/heroku/heroku-buildpack-php/compare/v177...v178
+[v177]: https://github.com/heroku/heroku-buildpack-php/compare/v176...v177
+[v176]: https://github.com/heroku/heroku-buildpack-php/compare/v175...v176
+[v175]: https://github.com/heroku/heroku-buildpack-php/compare/v174...v175
+[v174]: https://github.com/heroku/heroku-buildpack-php/compare/v173...v174
+[v173]: https://github.com/heroku/heroku-buildpack-php/compare/v172...v173
+[v172]: https://github.com/heroku/heroku-buildpack-php/compare/v171...v172
+[v171]: https://github.com/heroku/heroku-buildpack-php/compare/v170...v171
+[v170]: https://github.com/heroku/heroku-buildpack-php/compare/v169...v170
+[v169]: https://github.com/heroku/heroku-buildpack-php/compare/v168...v169
+[v168]: https://github.com/heroku/heroku-buildpack-php/compare/v167...v168
+[v167]: https://github.com/heroku/heroku-buildpack-php/compare/v166...v167
+[v166]: https://github.com/heroku/heroku-buildpack-php/compare/v165...v166
+[v165]: https://github.com/heroku/heroku-buildpack-php/compare/v164...v165
+[v164]: https://github.com/heroku/heroku-buildpack-php/compare/v163...v164
+[v163]: https://github.com/heroku/heroku-buildpack-php/compare/v162...v163
+[v162]: https://github.com/heroku/heroku-buildpack-php/compare/v161...v162
+[v161]: https://github.com/heroku/heroku-buildpack-php/compare/v160...v161
+[v160]: https://github.com/heroku/heroku-buildpack-php/compare/v159...v160
+[v159]: https://github.com/heroku/heroku-buildpack-php/compare/v158...v159
+[v158]: https://github.com/heroku/heroku-buildpack-php/compare/v157...v158
+[v157]: https://github.com/heroku/heroku-buildpack-php/compare/v156...v157
+[v156]: https://github.com/heroku/heroku-buildpack-php/compare/v155...v156
+[v155]: https://github.com/heroku/heroku-buildpack-php/compare/v154...v155
+[v154]: https://github.com/heroku/heroku-buildpack-php/compare/v153...v154
+[v153]: https://github.com/heroku/heroku-buildpack-php/compare/v152...v153
+[v152]: https://github.com/heroku/heroku-buildpack-php/compare/v151...v152
+[v151]: https://github.com/heroku/heroku-buildpack-php/compare/v150...v151
+[v150]: https://github.com/heroku/heroku-buildpack-php/compare/v149...v150
+[v149]: https://github.com/heroku/heroku-buildpack-php/compare/v148...v149
+[v148]: https://github.com/heroku/heroku-buildpack-php/compare/v147...v148
+[v147]: https://github.com/heroku/heroku-buildpack-php/compare/v146...v147
+[v146]: https://github.com/heroku/heroku-buildpack-php/compare/v145...v146
+[v145]: https://github.com/heroku/heroku-buildpack-php/compare/v144...v145
+[v144]: https://github.com/heroku/heroku-buildpack-php/compare/v143...v144
+[v143]: https://github.com/heroku/heroku-buildpack-php/compare/v142...v143
+[v142]: https://github.com/heroku/heroku-buildpack-php/compare/v141...v142
+[v141]: https://github.com/heroku/heroku-buildpack-php/compare/v140...v141
+[v140]: https://github.com/heroku/heroku-buildpack-php/compare/v139...v140
+[v139]: https://github.com/heroku/heroku-buildpack-php/compare/v138...v139
+[v138]: https://github.com/heroku/heroku-buildpack-php/compare/v137...v138
+[v137]: https://github.com/heroku/heroku-buildpack-php/compare/v136...v137
+[v136]: https://github.com/heroku/heroku-buildpack-php/compare/v135...v136
+[v135]: https://github.com/heroku/heroku-buildpack-php/compare/v134...v135
+[v134]: https://github.com/heroku/heroku-buildpack-php/compare/v133...v134
+[v133]: https://github.com/heroku/heroku-buildpack-php/compare/v132...v133
+[v132]: https://github.com/heroku/heroku-buildpack-php/compare/v131...v132
+[v131]: https://github.com/heroku/heroku-buildpack-php/compare/v130...v131
+[v130]: https://github.com/heroku/heroku-buildpack-php/compare/v129...v130
+[v129]: https://github.com/heroku/heroku-buildpack-php/compare/v128...v129
+[v128]: https://github.com/heroku/heroku-buildpack-php/compare/v127...v128
+[v127]: https://github.com/heroku/heroku-buildpack-php/compare/v126...v127
+[v126]: https://github.com/heroku/heroku-buildpack-php/compare/v125...v126
+[v125]: https://github.com/heroku/heroku-buildpack-php/compare/v124...v125
+[v124]: https://github.com/heroku/heroku-buildpack-php/compare/v123...v124
+[v123]: https://github.com/heroku/heroku-buildpack-php/compare/v122...v123
+[v122]: https://github.com/heroku/heroku-buildpack-php/compare/v121...v122
+[v121]: https://github.com/heroku/heroku-buildpack-php/compare/v120...v121
+[v120]: https://github.com/heroku/heroku-buildpack-php/compare/v119...v120
+[v119]: https://github.com/heroku/heroku-buildpack-php/compare/v118...v119
+[v118]: https://github.com/heroku/heroku-buildpack-php/compare/v117...v118
+[v117]: https://github.com/heroku/heroku-buildpack-php/compare/v116...v117
+[v116]: https://github.com/heroku/heroku-buildpack-php/compare/v115...v116
+[v115]: https://github.com/heroku/heroku-buildpack-php/compare/v114...v115
+[v114]: https://github.com/heroku/heroku-buildpack-php/compare/v113...v114
+[v113]: https://github.com/heroku/heroku-buildpack-php/compare/v112...v113
+[v112]: https://github.com/heroku/heroku-buildpack-php/compare/v111...v112
+[v111]: https://github.com/heroku/heroku-buildpack-php/compare/v110...v111
+[v110]: https://github.com/heroku/heroku-buildpack-php/compare/v109...v110
+[v109]: https://github.com/heroku/heroku-buildpack-php/compare/v108...v109
+[v108]: https://github.com/heroku/heroku-buildpack-php/compare/v107...v108
+[v107]: https://github.com/heroku/heroku-buildpack-php/compare/v106...v107
+[v106]: https://github.com/heroku/heroku-buildpack-php/compare/v105...v106
+[v105]: https://github.com/heroku/heroku-buildpack-php/compare/v104...v105
+[v104]: https://github.com/heroku/heroku-buildpack-php/compare/v103...v104
+[v103]: https://github.com/heroku/heroku-buildpack-php/compare/v102...v103
+[v102]: https://github.com/heroku/heroku-buildpack-php/compare/v101...v102
+[v101]: https://github.com/heroku/heroku-buildpack-php/compare/v100...v101
+[v100]: https://github.com/heroku/heroku-buildpack-php/compare/v99...v100
+[v99]: https://github.com/heroku/heroku-buildpack-php/compare/v98...v99
+[v98]: https://github.com/heroku/heroku-buildpack-php/compare/v97...v98
+[v97]: https://github.com/heroku/heroku-buildpack-php/compare/v96...v97
+[v96]: https://github.com/heroku/heroku-buildpack-php/compare/v95...v96
+[v95]: https://github.com/heroku/heroku-buildpack-php/compare/v94...v95
+[v94]: https://github.com/heroku/heroku-buildpack-php/compare/v93...v94
+[v93]: https://github.com/heroku/heroku-buildpack-php/compare/v92...v93
+[v92]: https://github.com/heroku/heroku-buildpack-php/compare/v91...v92
+[v91]: https://github.com/heroku/heroku-buildpack-php/compare/v90...v91
+[v90]: https://github.com/heroku/heroku-buildpack-php/compare/v89...v90
+[v89]: https://github.com/heroku/heroku-buildpack-php/compare/v88...v89
+[v88]: https://github.com/heroku/heroku-buildpack-php/compare/v87...v88
+[v87]: https://github.com/heroku/heroku-buildpack-php/compare/v86...v87
+[v86]: https://github.com/heroku/heroku-buildpack-php/compare/v85...v86
+[v85]: https://github.com/heroku/heroku-buildpack-php/compare/v84...v85
+[v84]: https://github.com/heroku/heroku-buildpack-php/compare/v83...v84
+[v83]: https://github.com/heroku/heroku-buildpack-php/compare/v82...v83
+[v82]: https://github.com/heroku/heroku-buildpack-php/compare/v81...v82
+[v81]: https://github.com/heroku/heroku-buildpack-php/compare/v80...v81
+[v80]: https://github.com/heroku/heroku-buildpack-php/compare/v79...v80
+[v79]: https://github.com/heroku/heroku-buildpack-php/compare/v78...v79
+[v78]: https://github.com/heroku/heroku-buildpack-php/compare/v77...v78
+[v77]: https://github.com/heroku/heroku-buildpack-php/compare/v76...v77
+[v76]: https://github.com/heroku/heroku-buildpack-php/compare/v75...v76
+[v75]: https://github.com/heroku/heroku-buildpack-php/compare/v74...v75
+[v74]: https://github.com/heroku/heroku-buildpack-php/compare/v73...v74
+[v73]: https://github.com/heroku/heroku-buildpack-php/compare/v72...v73
+[v72]: https://github.com/heroku/heroku-buildpack-php/compare/v71...v72
+[v71]: https://github.com/heroku/heroku-buildpack-php/compare/v70...v71
+[v70]: https://github.com/heroku/heroku-buildpack-php/compare/v69...v70
+[v69]: https://github.com/heroku/heroku-buildpack-php/compare/v68...v69
+[v68]: https://github.com/heroku/heroku-buildpack-php/compare/v67...v68
+[v67]: https://github.com/heroku/heroku-buildpack-php/compare/v66...v67
+[v66]: https://github.com/heroku/heroku-buildpack-php/compare/v65...v66
+[v65]: https://github.com/heroku/heroku-buildpack-php/compare/v64...v65
+[v64]: https://github.com/heroku/heroku-buildpack-php/compare/v63...v64
+[v63]: https://github.com/heroku/heroku-buildpack-php/compare/v62...v63
+[v62]: https://github.com/heroku/heroku-buildpack-php/compare/v61...v62
+[v61]: https://github.com/heroku/heroku-buildpack-php/compare/v60...v61
+[v60]: https://github.com/heroku/heroku-buildpack-php/compare/v59...v60
+[v59]: https://github.com/heroku/heroku-buildpack-php/compare/v58...v59
+[v58]: https://github.com/heroku/heroku-buildpack-php/compare/v57...v58
+[v57]: https://github.com/heroku/heroku-buildpack-php/compare/v56...v57
+[v56]: https://github.com/heroku/heroku-buildpack-php/compare/v55...v56
+[v55]: https://github.com/heroku/heroku-buildpack-php/compare/v54...v55
+[v54]: https://github.com/heroku/heroku-buildpack-php/compare/v53...v54

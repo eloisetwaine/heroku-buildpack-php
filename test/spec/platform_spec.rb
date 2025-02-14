@@ -9,6 +9,8 @@ require "tempfile"
 generator_fixtures_subdir = "test/fixtures/platform/generator"
 manifest_fixtures_subdir = "test/fixtures/platform/builder/manifest"
 mkrepo_fixtures_subdir = "test/fixtures/platform/builder/mkrepo"
+priorities_fixtures_subdir = "test/fixtures/platform/repository/priorities"
+sync_fixtures_subdir = "test/fixtures/platform/builder/sync"
 
 describe "The PHP Platform Installer" do
 	describe "composer.json Generator Script" do
@@ -142,17 +144,8 @@ describe "The PHP Platform Installer" do
 	end
 	
 	describe "Repository" do
-		after(:each) do
-			Process.kill("TERM", @pid)
-			Process.wait(@pid)
-		end
-		
 		it "can hold packages compatible with future versions of the buildpack the current version will ignore" do
 			Dir.chdir("test/fixtures/platform/repository/futurepaks") do |cwd|
-				# we spawn a web server that serves packages.json, like a real composer repository
-				# this is to ensure that Composer really uses ComposerRepository behavior for provide/replace declarations
-				@pid = spawn("php -S localhost:8080")
-				
 				cmd = "composer install --dry-run"
 				stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
 				expect(status.exitstatus).to eq(0), "dry run install failed, stderr: #{stderr}, stdout: #{stdout}"
@@ -162,22 +155,21 @@ describe "The PHP Platform Installer" do
 			end
 		end
 		
-		it "combined with a custom repository installs packages from that repo according to the priority given" do
-			Dir.chdir("test/fixtures/platform/repository/priorities") do |cwd|
-				# we spawn a web server that serves packages*.json, like a real composer repository
-				# this is to ensure that Composer really uses ComposerRepository behavior for priorities etc
-				@pid = spawn("php -S localhost:8080")
-				Dir.glob("composer-*.json") do |testcase|
-					cmd = "COMPOSER=#{testcase} composer install --dry-run"
-					stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
-					expect(status.exitstatus).to eq(0), "dry run install failed for case #{testcase}, stderr: #{stderr}, stdout: #{stdout}"
-					
-					expect(stderr).to include("heroku-sys/php (8.0.8)")
-					expect(stderr).to include("heroku-sys/ext-igbinary (3.2.7)")
-					if ["composer-default.json"].include? testcase
-						expect(stderr).to include("heroku-sys/ext-redis (5.3.4)") # packages from the custom repo (listed first) are authoritative; the newer package version from the default repo is not selected
-					else
-						expect(stderr).to include("heroku-sys/ext-redis (5.3.5)") # canonical=false or an appropriate only/exclude setting on the custom repo means the newer version from the default repo is selected
+		describe "combined with a custom repository installs packages from that repo according to the priority given", :focused => true do
+			Dir.glob("composer-*.json", base: priorities_fixtures_subdir) do |testcase|
+				it "in case #{testcase}" do
+					Dir.chdir(priorities_fixtures_subdir) do |cwd|
+						cmd = "COMPOSER=#{testcase} composer install --dry-run"
+						stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
+						expect(status.exitstatus).to eq(0), "dry run install failed, stderr: #{stderr}, stdout: #{stdout}"
+						
+						expect(stderr).to include("heroku-sys/php (8.0.8)")
+						expect(stderr).to include("heroku-sys/ext-igbinary (3.2.7)")
+						if ["composer-default.json"].include? testcase
+							expect(stderr).to include("heroku-sys/ext-redis (5.3.4)") # packages from the custom repo (listed first) are authoritative; the newer package version from the default repo is not selected
+						else
+							expect(stderr).to include("heroku-sys/ext-redis (5.3.5)") # canonical=false or an appropriate only/exclude setting on the custom repo means the newer version from the default repo is selected
+						end
 					end
 				end
 			end
@@ -190,7 +182,7 @@ describe "The PHP Platform Installer" do
 				bp_root = [".."].cycle("#{manifest_fixtures_subdir}/#{testcase}".count("/")+1).to_a.join("/") # right "../.." sequence to get us back to the root of the buildpack
 				Dir.chdir("#{manifest_fixtures_subdir}/#{testcase}") do |cwd|
 					cmd = File.read("ENV") # any env vars for the test (manifest.py needs STACK, S3_BUCKET, S3_PREFIX, TIME)
-					cmd << " python #{bp_root}/support/build/_util/include/manifest.py "
+					cmd << " python3 #{bp_root}/support/build/_util/include/manifest.py "
 					cmd << File.read("ARGS")
 					stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
 				
@@ -211,7 +203,7 @@ describe "The PHP Platform Installer" do
 				bp_root = [".."].cycle("#{mkrepo_fixtures_subdir}/#{testcase}".count("/")+1).to_a.join("/") # right "../.." sequence to get us back to the root of the buildpack
 				Dir.chdir("#{mkrepo_fixtures_subdir}/#{testcase}") do |cwd|
 					
-					cmd = "#{bp_root}/support/build/_util/mkrepo.sh OURS3BUCKET OURS3PREFIX/ *.composer.json"
+					cmd = "S3_BUCKET=OURS3BUCKET S3_PREFIX=OURS3PREFIX/ #{bp_root}/support/build/_util/mkrepo.sh *.composer.json"
 					stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
 				
 					expect(status.exitstatus).to eq(0), "mkrepo.sh failed, stdout: #{stdout}, stderr: #{stderr}"
@@ -225,10 +217,45 @@ describe "The PHP Platform Installer" do
 		end
 	end
 	
+	describe "Repository Sync Operations Program" do
+		it "produces the expected list of operations when syncing between two repositories" do
+			bp_root = [".."].cycle("#{sync_fixtures_subdir}".count("/")+1).to_a.join("/") # right "../.." sequence to get us back to the root of the buildpack
+			Dir.chdir("#{sync_fixtures_subdir}") do |cwd|
+				cmd = "python3 #{bp_root}/support/build/_util/include/sync.py --dry-run us-east-1 lang-php dist-heroku-24-develop/ manifests-src/ us-east-1 lang-php dist-heroku-24-stable/ manifests-dst/"
+				stdout, stderr, status = Open3.capture3("bash -c #{Shellwords.escape(cmd)}")
+				
+				expect(status.exitstatus).to eq(0), "sync.py failed, stdout: #{stdout}, stderr: #{stderr}"
+				
+				expected_json = JSON.parse(File.read("expected_ops.json"))
+				generated_json = JSON.parse(stdout)
+				
+				# compare sorted list of operations (sync.py processes in no defined order)
+				expect(expected_json.sort_by(&:zip)).to eq(generated_json.sort_by(&:zip))
+			end
+		end
+	end
+	
 	describe "during a build" do
+		context "of a project that has invalid platform dependencies" do
+			let(:app) {
+				new_app_with_stack_and_platrepo('test/fixtures/default',
+					before_deploy: -> { system("composer require --quiet --ignore-platform-reqs php '99.*'") or raise "Failed to require PHP version" },
+					run_multi: true,
+					allow_failure: true
+				)
+			}
+			it "fails the build" do
+				app.deploy do |app|
+					expect(app.output).to include("ERROR: Failed to install system packages!")
+				end
+			end
+		end
+		
 		context "of a project that uses polyfills providing both bundled-with-PHP and third-party extensions" do
+			# we set an invalid COMPOSER_AUTH on all of these to stop and fail the build on userland dependency install
+			# we only need to check what happened during the platform install step, so that speeds things up
 			it "treats polyfills for bundled-with-PHP and third-party extensions the same", :requires_php_on_stack => "7.4" do
-				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills').deploy do |app|
+				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills', config: { "COMPOSER_AUTH" => "broken" }, allow_failure: true).deploy do |app|
 					expect(app.output).to include("detected userland polyfill packages for PHP extensions")
 					expect(app.output).not_to include("- ext-mbstring") # ext not required by any dependency, so should not be installed or even attempted ("- ext-mbstring...")
 					out_before_polyfills, out_after_polyfills = app.output.split("detected userland polyfill packages for PHP extensions", 2)
@@ -241,7 +268,7 @@ describe "The PHP Platform Installer" do
 				end
 			end
 			it "installs native bundled extensions for legacy PHP builds for installer < 1.6 even if they are provided by a polyfill", :requires_php_on_stack => "7.3" do
-				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-legacy').deploy do |app|
+				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-legacy', config: { "COMPOSER_AUTH" => "broken" }, allow_failure: true).deploy do |app|
 					expect(app.output).to include("detected userland polyfill packages for PHP extensions")
 					expect(app.output).not_to include("- ext-mbstring") # ext not required by any dependency, so should not be installed or even attempted ("- ext-mbstring...")
 					out_before_polyfills, out_after_polyfills = app.output.split("detected userland polyfill packages for PHP extensions", 2)
@@ -253,7 +280,7 @@ describe "The PHP Platform Installer" do
 				end
 			end
 			it "solves using the polyfills first and does not downgrade installed packages in the later native install step" do
-				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-nodowngrade').deploy do |app|
+				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-nodowngrade', config: { "COMPOSER_AUTH" => "broken" }, allow_failure: true).deploy do |app|
 					expect(app.output).to include("detected userland polyfill packages for PHP extensions")
 					expect(app.output).not_to include("- ext-mbstring") # ext not required by any dependency, so should not be installed or even attempted ("- ext-mbstring...")
 					out_before_polyfills, out_after_polyfills = app.output.split("detected userland polyfill packages for PHP extensions", 2)
@@ -267,7 +294,7 @@ describe "The PHP Platform Installer" do
 				end
 			end
 			it "ignores a polyfill for an extension that another extension depends upon" do
-				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-nointernaldeps').deploy do |app|
+				new_app_with_stack_and_platrepo('test/fixtures/platform/installer/polyfills-nointernaldeps', config: { "COMPOSER_AUTH" => "broken" }, allow_failure: true).deploy do |app|
 					expect(app.output).to include("detected userland polyfill packages for PHP extensions")
 					# ext-pq got installed...
 					expect(app.output).to include("- ext-pq (")
